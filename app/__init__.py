@@ -1,12 +1,14 @@
 from app.views import configure as vwconfig
-from app.db import db, configure as dbconfig
 from flask import Flask
 from flask_admin import Admin
-from app.models.user import User, UserView
+from app.models.user import User, UserView, db
+from flask_mongoengine import MongoEngine
 
 def create_app():
     APP = Flask(__name__)
-    dbconfig(APP)
+    APP.config['SECRET_KEY'] = 'furfull-fellings'
+    APP.config['MONGODB_SETTINGS'] = {'DB':'testing'}
+    db.init_app(APP)
     vwconfig(APP)
     ADMIN = Admin(APP, name="Points Manager", template_mode="bootstrap3")
     ADMIN.add_view(UserView(User))

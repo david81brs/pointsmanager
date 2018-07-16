@@ -1,5 +1,7 @@
-from app.db import db
+from flask_mongoengine import MongoEngine
 from flask_admin.contrib.mongoengine import ModelView
+
+db = MongoEngine()
 
 class User(db.Document):
     name = db.StringField(max_length=100)
