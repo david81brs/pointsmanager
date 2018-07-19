@@ -5,6 +5,7 @@ db = MongoEngine()
 
 class User(db.Document):
     name = db.StringField(max_length=100)
+    password = db.StringField()
 
     def __unicode__(self):
         return self.name
