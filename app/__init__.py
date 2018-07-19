@@ -8,6 +8,7 @@ def create_app():
     APP = Flask(__name__)
     APP.config['SECRET_KEY'] = 'furfull-fellings'
     APP.config['MONGODB_SETTINGS'] = {'DB':'testing'}
+    APP.config['FLASK_ADMIN_SWATCH']='slate'
     db.init_app(APP)
     vwconfig(APP)
     ADMIN = Admin(APP, name="Points Manager", template_mode="bootstrap3")
